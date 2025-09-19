@@ -23,24 +23,23 @@ Nuclei is an open-source, template-based vulnerability scanner widely used in pe
 - Information Disclosure  
 - Exposed Admin Panels  
 - Weak SSL/TLS Configurations  
-@mihaash  nuclei -u http://saturn.picoctf.net:62605/                   
 
-                     __     _
-   ____  __  _______/ /__  (_)
-  / __ \/ / / / ___/ / _ \/ /
- / / / / /_/ / /__/ /  __/ /
-/_/ /_/\__,_/\___/_/\___/_/   v3.4.10
+# Nmap
 
-		projectdiscovery.io
+**Nmap** 
+(Network Mapper) is a free, open-source tool for network discovery and security auditing.
 
-[WRN] Found 1 templates with syntax error (use -validate flag for further examination)
-[INF] Current nuclei version: v3.4.10 (latest)
-[INF] Current nuclei-templates version: v10.2.8 (latest)
-[INF] New templates added in latest release: 114
-[INF] Templates loaded for current scan: 8323
-[INF] Executing 8121 signed templates from projectdiscovery/nuclei-templates
-[WRN] Loading 202 unsigned templates for scan. Use with caution.
-[INF] Targets loaded for current scan: 1
-[INF] Templates clustered: 1782 (Reduced 1676 Requests)
-[INF] Using Interactsh Server: oast.live
-[INF] Scan completed in 3m. 0 matches found.
+## Key Capabilities
+- **Host discovery** — find live hosts on a network.  
+- **Port scanning** — discover open TCP/UDP ports on hosts.  
+- **Service/version detection** — identify running services and their versions (`-sV`).  
+- **OS detection** — attempt to fingerprint the remote OS (`-O`).  
+- **Scriptable interaction** — run NSE (Nmap Scripting Engine) scripts for advanced checks (vuln detection, HTTP enumeration, brute force, etc.).  
+- **Performance tuning** — control timing and scan speed (`-T0`..`-T5`).  
+
+---
+
+## Nmap Scripting Engine (NSE)
+- **Vulnerability checks** (`vuln` category)  
+- **HTTP enumeration** (`http-*`)  
+- **Brute force** (`auth`), **SMB checks**, **DNS checks**, etc.
