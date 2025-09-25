@@ -1,4 +1,4 @@
-# blue-team-tools
+  # blue-team-tools
 # Network Discovery tools
 # 🔎 Nuclei Tool 
 
@@ -87,5 +87,14 @@ CNAME Record
 
 - TXT records are free text fields where any text-based data can be stored. TXT records have multiple uses, but some common ones can be to list servers that have the authority to send an email on behalf of the domain (this can help in the battle against spam and spoofed email). They can also be used to verify ownership of the domain name when signing up for third party services.
 
+
+
+| Feature      | Nessus                     | Nexpose (Rapid7)           |
+| ------------ | -------------------------- | -------------------------- |
+| Vendor       | Tenable                    | Rapid7                     |
+| Target       | Vulnerability scanning     | Vulnerability + risk mgmt  |
+| Integration  | Mostly scanning            | Integrates with Metasploit |
+| Reporting    | Reports only               | Dashboards + reports       |
+| Free version | Nessus Essentials (16 IPs) | Community (limited)        |
 
 
