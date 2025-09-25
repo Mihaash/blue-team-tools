@@ -87,6 +87,16 @@ CNAME Record
 
 - TXT records are free text fields where any text-based data can be stored. TXT records have multiple uses, but some common ones can be to list servers that have the authority to send an email on behalf of the domain (this can help in the battle against spam and spoofed email). They can also be used to verify ownership of the domain name when signing up for third party services.
 
+- | Feature        | Nmap                                             | ZMap                                             |
+|----------------|-------------------------------------------------|------------------------------------------------|
+| Purpose        | In-depth network & vulnerability scanning      | Internet-scale discovery (fast probing)       |
+| Speed          | Slower (does TCP handshake, service detection, OS fingerprinting) | Extremely fast (can scan the whole IPv4 Internet in minutes) |
+| Detail Level   | Very detailed (services, versions, OS, scripts, vulnerabilities) | Very basic (just tells if a port is open/responding) |
+| Scanning Model | Stateful (completes handshakes, tracks sessions) | Stateless (fires probes, listens for replies) |
+| Accuracy       | High (fewer false positives, more reliable)    | Fast but less accurate (can miss things or produce false positives) |
+| Output         | Services, versions, vulnerabilities, scripts   | List of IPs that responded on a given port   |
+
+
 
 
 | Feature      | Nessus                     | Nexpose (Rapid7)           |
@@ -133,6 +143,9 @@ CNAME Record
 | **27**   | FileBlock Executable (execution blocked by Sysmon config)                                    |
 | **28**   | FileBlock Shredding (file overwrite prevention)                                              |
 | **29**   | FileBlock Unauthorized (file creation blocked)
+
+
+
 
 
 
