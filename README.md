@@ -97,4 +97,42 @@ CNAME Record
 | Reporting    | Reports only               | Dashboards + reports       |
 | Free version | Nessus Essentials (16 IPs) | Community (limited)        |
 
+**Sysmon**
+- (System Monitor) is a Windows system monitoring tool that is part of the **Sysinternals Suite** (from Microsoft).  
+- It runs as a background service and logs detailed system events to the **Windows Event Log**, which security teams can analyze for signs of malicious activity.
+  # Sysmon Event IDs
+
+| Event ID | Description                                                                                  |
+| -------- | -------------------------------------------------------------------------------------------- |
+| **1**    | Process creation (new process started, with full command line, hashes, parent process, etc.) |
+| **2**    | File creation time changed (timestamp tampering, often used by attackers)                    |
+| **3**    | Network connection (source/destination IPs, ports, protocols)                                |
+| **4**    | Sysmon service state changed (started/stopped)                                               |
+| **5**    | Process terminated                                                                           |
+| **6**    | Driver loaded (kernel driver loading, can detect rootkits)                                   |
+| **7**    | Image loaded (DLLs and executables loaded by processes)                                      |
+| **8**    | CreateRemoteThread (used for code injection techniques)                                      |
+| **9**    | RawAccessRead (direct disk access, often by malware)                                         |
+| **10**   | Process access (attempts to access another process memory/handle)                            |
+| **11**   | File created (new files being created on disk)                                               |
+| **12**   | Registry object created or deleted                                                           |
+| **13**   | Registry value set                                                                           |
+| **14**   | Registry object renamed                                                                      |
+| **15**   | File stream created (alternate data streams, used for hiding files)                          |
+| **16**   | Sysmon config change                                                                         |
+| **17**   | Pipe created (named pipe, inter-process communication)                                       |
+| **18**   | Pipe connected                                                                               |
+| **19**   | WMI event filter registered                                                                  |
+| **20**   | WMI event consumer registered                                                                |
+| **21**   | WMI event consumer to filter binding                                                         |
+| **22**   | DNS query (logs domain lookups from processes)                                               |
+| **23**   | File Delete archived (file deleted, archived in event)                                       |
+| **24**   | Clipboard changed (captures clipboard contents, if enabled)                                  |
+| **25**   | Process Tampering (modifications like hollowing or herpaderping)                             |
+| **26**   | File Delete logged (delete operation without archive)                                        |
+| **27**   | FileBlock Executable (execution blocked by Sysmon config)                                    |
+| **28**   | FileBlock Shredding (file overwrite prevention)                                              |
+| **29**   | FileBlock Unauthorized (file creation blocked)
+
+
 
