@@ -1,17 +1,17 @@
   # blue-team-tools
 # Network Discovery tools
-| Port(s)       | Protocol              |
-|---------------|-----------------------|
-| 20/21 (TCP)   | FTP                   |
-| 22 (TCP)      | SSH                   |
-| 23 (TCP)      | Telnet                |
-| 25 (TCP)      | SMTP                  |
-| 80 (TCP)      | HTTP                  |
-| 161 (TCP/UDP) | SNMP                  |
-| 389 (TCP/UDP) | LDAP                  |
-| 443 (TCP)     | SSL/TLS (HTTPS)       |
-| 445 (TCP)     | SMB                   |
-| 3389 (TCP)    | RDP                   |
+| Port(s)       | Protocol              | Purpose                                                                 |
+|---------------|-----------------------|-------------------------------------------------------------------------|
+| 20/21 (TCP)   | FTP                   | File Transfer Protocol — port 21 for commands, 20 for data transfer     |
+| 22 (TCP)      | SSH                   | Secure Shell — secure remote login and command execution                |
+| 23 (TCP)      | Telnet                | Telnet — unencrypted remote login (insecure, rarely used)              |
+| 25 (TCP)      | SMTP                  | Simple Mail Transfer Protocol — sending email                           |
+| 80 (TCP)      | HTTP                  | Hypertext Transfer Protocol — standard web traffic                      |
+| 161 (TCP/UDP) | SNMP                  | Simple Network Management Protocol — device monitoring/management       |
+| 389 (TCP/UDP) | LDAP                  | Lightweight Directory Access Protocol — directory/authentication        |
+| 443 (TCP)     | SSL/TLS (HTTPS)       | Secure HTTP — encrypted web traffic                                     |
+| 445 (TCP)     | SMB                   | Server Message Block — file/printer sharing (Windows networks)          |
+| 3389 (TCP)    | RDP                   | Remote Desktop Protocol — remote access to Windows desktops/servers     |
 
 # 🔎 Nuclei Tool 
 
