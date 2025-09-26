@@ -161,16 +161,8 @@ CNAME Record
 | **28**   | FileBlock Shredding (file overwrite prevention)                                              |
 | **29**   | FileBlock Unauthorized (file creation blocked)
 
-# Cheat Sheet
 
 ## General
-| Command | Description |
-|---------|-------------|
-| `sudo openvpn user.ovpn` | Connect to VPN |
-| `ifconfig` / `ip a` | Show our IP address |
-| `netstat -rn` | Show networks accessible via the VPN |
-| `ssh user@10.10.10.10` | SSH to a remote server |
-| `ftp 10.129.42.253` | FTP to a remote server |
 
 ## Tmux
 | Command | Description |
