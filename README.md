@@ -1,5 +1,18 @@
   # blue-team-tools
 # Network Discovery tools
+| Port(s)       | Protocol              |
+|---------------|-----------------------|
+| 20/21 (TCP)   | FTP                   |
+| 22 (TCP)      | SSH                   |
+| 23 (TCP)      | Telnet                |
+| 25 (TCP)      | SMTP                  |
+| 80 (TCP)      | HTTP                  |
+| 161 (TCP/UDP) | SNMP                  |
+| 389 (TCP/UDP) | LDAP                  |
+| 443 (TCP)     | SSL/TLS (HTTPS)       |
+| 445 (TCP)     | SMB                   |
+| 3389 (TCP)    | RDP                   |
+
 # 🔎 Nuclei Tool 
 
 Nuclei is an open-source, template-based vulnerability scanner widely used in penetration testing and bug bounty hunting.
@@ -143,6 +156,9 @@ CNAME Record
 | **27**   | FileBlock Executable (execution blocked by Sysmon config)                                    |
 | **28**   | FileBlock Shredding (file overwrite prevention)                                              |
 | **29**   | FileBlock Unauthorized (file creation blocked)
+
+
+
 
 
 
