@@ -1,4 +1,26 @@
   # blue-team-tools
+  
+  #IP address
+- An IP address (Internet Protocol address) is a unique identifier assigned to each device connected to a network, allowing devices to communicate with each other. It can be IPv4 (e.g., 192.168.1.10) or IPv6 (e.g., 2001:0db8:85a3::8a2e:0370:7334).
+
+| Type         | Example       | Scope / Use Case                      |
+| ------------ | ------------- | ------------------------------------- |
+| **Private**  | 192.168.1.10  | Local LAN (home, office)              |
+| **Public**   | 103.25.231.88 | Internet-facing, ISP-assigned         |
+| **Static**   | 203.0.113.25  | Fixed server IP (websites, VPNs, DNS) |
+| **Dynamic**  | 103.45.68.90  | ISP-assigned, changes periodically    |
+| **Loopback** | 127.0.0.1     | Testing on your own device            |
+| **APIPA**    | 169.254.45.10 | Self-assigned when DHCP fails         |
+# MAC address
+- A MAC address (Media Access Control address) is a unique identifier assigned to a network interface card (NIC) for communication on a physical network segment. Unlike IP addresses, which can change depending on the network, a MAC address is hardware-based and usually permanent (burned into the device by the manufacturer).
+
+🔹 Key Points:
+
+- **Format:** 6 pairs of hexadecimal numbers separated by colons or hyphens  
+  Example: `00:1A:2B:3C:4D:5E` or `00-1A-2B-3C-4D-5E`
+
+- **Length:** 48 bits (6 bytes)
+
 # Network Discovery tools
 | Port(s)       | Protocol              | Purpose                                                                 |
 |---------------|-----------------------|-------------------------------------------------------------------------|
