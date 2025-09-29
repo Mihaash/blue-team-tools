@@ -18,10 +18,28 @@
 
 - **Format:** 6 pairs of hexadecimal numbers separated by colons or hyphens  
   Example: `00:1A:2B:3C:4D:5E` or `00-1A-2B-3C-4D-5E`
-
 - **Length:** 48 bits (6 bytes)
+- ### TCP vs UDP
 
-# Network Discovery tools
+TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two core transport layer protocols in the TCP/IP model. They both transmit data over networks but have fundamental differences.
+
+| Feature                | TCP                                     | UDP                                     |
+|------------------------|----------------------------------------|----------------------------------------|
+| **Full Name**          | Transmission Control Protocol           | User Datagram Protocol                  |
+| **Type**               | Connection-oriented                     | Connectionless                          |
+| **Reliability**        | Reliable (guaranteed delivery)          | Unreliable (no guarantee)               |
+| **Error Checking**      | Checks for errors and retransmits lost packets | Checks for errors but does not retransmit |
+| **Order of Data**      | Preserves the order of packets          | Packets may arrive out of order         |
+| **Speed**              | Slower due to handshakes and retransmissions | Faster, minimal overhead               |
+| **Use Cases**          | Web browsing (HTTP/HTTPS), Email (SMTP), File Transfer (FTP) | Streaming (video/audio), DNS, VoIP     |
+| **Connection**         | Requires a 3-way handshake to establish connection | No handshake needed                     |
+| **Flow Control**       | Supported                               | Not supported                           |
+| **Header Size**        | 20 bytes minimum                        | 8 bytes minimum                         |
+- TCP is reliable, ordered, and heavier; suitable for applications where data integrity is critical.  
+- UDP is fast, lightweight, but less reliable; suitable for real-time applications like streaming, gaming, and VoIP.
+
+
+
 | Port(s)       | Protocol              | Purpose                                                                 |
 |---------------|-----------------------|-------------------------------------------------------------------------|
 | 20/21 (TCP)   | FTP                   | File Transfer Protocol — port 21 for commands, 20 for data transfer     |
@@ -38,7 +56,7 @@
 - SSH: Secure, encrypted connection to a remote system; requires credentials. Used for safe remote login and file transfer.
 
 - Netcat: Raw, unencrypted network tool; can send/receive data freely. Used for testing, debugging, or simple file transfer.
-
+# Network Discovery tools
 # 🔎 Nuclei Tool 
 
 Nuclei is an open-source, template-based vulnerability scanner widely used in penetration testing and bug bounty hunting.
