@@ -124,6 +124,52 @@ CNAME Record
 | Reporting    | Reports only               | Dashboards + reports       |
 | Free version | Nessus Essentials (16 IPs) | Community (limited)        |
 
+
+# Security Operations Center (SOC)
+
+A **Security Operations Center (SOC)** is the combination of people, processes, and technology that monitor, detect, investigate, and respond to cybersecurity incidents across an organization.
+
+---
+
+## Core Responsibilities
+
+- **24/7 Monitoring:** Logs, endpoints, network traffic, cloud services.  
+- **Detection:** Identify suspicious or malicious activity (alerts from SIEM, EDR, IDS).  
+- **Triage & Investigation:** Determine if alerts are false positives or real threats.  
+- **Incident Response:** Containment, eradication, and recovery for confirmed incidents.  
+- **Threat Hunting:** Proactively discover hidden attackers.  
+- **Threat Intelligence:** Ingest and operationalize IoCs and TTPs.  
+- **Forensics & Root-Cause Analysis:** Deep-dive investigations for major incidents.  
+- **Reporting & Compliance:** Regulatory evidence, post-incident reports.  
+- **Playbook Development & Tuning:** Create repeatable, tested response steps.  
+- **Security Engineering:** Tune tools, collect logs, improve detection coverage.
+
+---
+
+## SOC Models 
+
+- **In‑House / Internal SOC:** Organization owns staff and tooling; full control, higher cost.  
+- **Managed SOC / MSSP:** Outsource monitoring & initial triage to a vendor; cost-effective, less direct control.  
+- **Co‑Managed SOC:** Hybrid of internal team + MSSP; balanced approach.  
+- **Virtual SOC (vSOC):** Cloud/SaaS-driven; remote analysts, cloud-hosted tooling, fast deployment.  
+- **Command SOC:** Centralized command coordinating multiple regional/local SOCs in large enterprises.
+
+---
+
+## SOC Organization & Roles
+
+| Tier / Role | Responsibilities | Skills |
+|------------|-----------------|-------|
+| **Tier 1 Analyst (Alert Triage)** | Monitor SIEM dashboard, validate alerts, initial enrichment, escalate to Tier 2 | Log basics, Linux/Windows basics, networking, attention to detail |
+| **Tier 2 (Incident Responder)** | Deep investigations, endpoint triage, network traces, log correlation, containment | EDR tools, packet analysis, forensics, moderate scripting |
+| **Tier 3 (Threat Hunter / Forensics / Malware Analyst)** | Hunt stealthy attackers, reverse engineer malware, tune detections, develop content | Reverse engineering, memory forensics, threat intelligence, advanced scripting |
+| **SOC Engineer / Architect** | Build/tune SIEM, logging pipelines, integrations, automate playbooks | SIEM internals, APIs, data pipelines, containers, observability |
+| **Threat Intelligence Analyst** | Curate IoCs, map to MITRE ATT&CK, provide context & predictive insights | Threat intel analysis, MITRE ATT&CK mapping, reporting |
+| **SOC Manager / Head of SOC** | People & ops management, runbooks, KPIs, budgets, liaison with execs & IR teams | Management, strategy, communication, budgeting |
+| **Incident Response / Forensics Team** | Lead major incident remediation, legal coordination, post-mortems | Forensics, IR procedures, regulatory compliance |
+
+---
+
 **Sysmon**
 - (System Monitor) is a Windows system monitoring tool that is part of the **Sysinternals Suite** (from Microsoft).  
 - It runs as a background service and logs detailed system events to the **Windows Event Log**, which security teams can analyze for signs of malicious activity.
@@ -266,47 +312,94 @@ CNAME Record
 | `echo f0VMR... | base64 -d > shell` | Decode base64 to file |
 | `md5sum shell` | Check file MD5 sum |
 
-# Security Operations Center (SOC)
 
-A **Security Operations Center (SOC)** is the combination of people, processes, and technology that monitor, detect, investigate, and respond to cybersecurity incidents across an organization.
+# OWASP Top 10 – 2021 (A01 to A07)
 
----
-
-## Core Responsibilities
-
-- **24/7 Monitoring:** Logs, endpoints, network traffic, cloud services.  
-- **Detection:** Identify suspicious or malicious activity (alerts from SIEM, EDR, IDS).  
-- **Triage & Investigation:** Determine if alerts are false positives or real threats.  
-- **Incident Response:** Containment, eradication, and recovery for confirmed incidents.  
-- **Threat Hunting:** Proactively discover hidden attackers.  
-- **Threat Intelligence:** Ingest and operationalize IoCs and TTPs.  
-- **Forensics & Root-Cause Analysis:** Deep-dive investigations for major incidents.  
-- **Reporting & Compliance:** Regulatory evidence, post-incident reports.  
-- **Playbook Development & Tuning:** Create repeatable, tested response steps.  
-- **Security Engineering:** Tune tools, collect logs, improve detection coverage.
+The OWASP Top 10 is a standard awareness document for web application security.  
+It highlights the 10 most critical security risks for web apps based on real-world data and expert consensus.  
+Organizations and developers use it as a guideline to prioritize security fixes.
 
 ---
 
-## SOC Models 
+## A01:2021 – Broken Access Control
+**Definition:** Users can access data or perform actions they shouldn’t be able to.  
+**Why it’s risky:** Attackers can modify URLs, API calls, or cookies to gain admin privileges or access other users’ data.  
 
-- **In‑House / Internal SOC:** Organization owns staff and tooling; full control, higher cost.  
-- **Managed SOC / MSSP:** Outsource monitoring & initial triage to a vendor; cost-effective, less direct control.  
-- **Co‑Managed SOC:** Hybrid of internal team + MSSP; balanced approach.  
-- **Virtual SOC (vSOC):** Cloud/SaaS-driven; remote analysts, cloud-hosted tooling, fast deployment.  
-- **Command SOC:** Centralized command coordinating multiple regional/local SOCs in large enterprises.
+**Examples:**
+- URL manipulation: `/user/1234/orders` → changing `1234` to another user ID to see their data.  
+- Bypassing role checks in APIs.  
+
+**Mitigation:** Enforce server-side authorization checks; never rely solely on client-side restrictions.  
+
+---
+
+## A02:2021 – Cryptographic Failures
+**Definition:** Sensitive data is not properly protected in storage or transit.  
+**Why it’s risky:** Attackers can steal credentials, personal info, or payment data.  
+
+**Examples:**
+- Storing passwords in plain text instead of hashing with bcrypt/argon2.  
+- Using outdated TLS/SSL protocols.  
+
+**Mitigation:** Use strong encryption, secure key management, HTTPS everywhere, and proper hashing for passwords.  
 
 ---
 
-## SOC Organization & Roles
+## A03:2021 – Injection
+**Definition:** User input is not sanitized and is executed by the server.  
+**Why it’s risky:** Attackers can manipulate SQL, NoSQL, OS, or LDAP commands to access or destroy data.  
 
-| Tier / Role | Responsibilities | Skills |
-|------------|-----------------|-------|
-| **Tier 1 Analyst (Alert Triage)** | Monitor SIEM dashboard, validate alerts, initial enrichment, escalate to Tier 2 | Log basics, Linux/Windows basics, networking, attention to detail |
-| **Tier 2 (Incident Responder)** | Deep investigations, endpoint triage, network traces, log correlation, containment | EDR tools, packet analysis, forensics, moderate scripting |
-| **Tier 3 (Threat Hunter / Forensics / Malware Analyst)** | Hunt stealthy attackers, reverse engineer malware, tune detections, develop content | Reverse engineering, memory forensics, threat intelligence, advanced scripting |
-| **SOC Engineer / Architect** | Build/tune SIEM, logging pipelines, integrations, automate playbooks | SIEM internals, APIs, data pipelines, containers, observability |
-| **Threat Intelligence Analyst** | Curate IoCs, map to MITRE ATT&CK, provide context & predictive insights | Threat intel analysis, MITRE ATT&CK mapping, reporting |
-| **SOC Manager / Head of SOC** | People & ops management, runbooks, KPIs, budgets, liaison with execs & IR teams | Management, strategy, communication, budgeting |
-| **Incident Response / Forensics Team** | Lead major incident remediation, legal coordination, post-mortems | Forensics, IR procedures, regulatory compliance |
+**Examples:**
+- **SQL Injection:** `SELECT * FROM users WHERE username='$input'` → attacker enters `' OR 1=1--`.  
+- **Command Injection:** Passing unsanitized user input to `system()` or `exec()`.  
+
+**Mitigation:** Use parameterized queries, input validation, and ORM frameworks.  
 
 ---
+
+## A04:2021 – Insecure Design
+**Definition:** Security flaws stemming from application design and architecture rather than coding errors.  
+**Why it’s risky:** Even with secure code, weak design can lead to vulnerabilities.  
+
+**Examples:**
+- No multi-factor authentication for sensitive actions.  
+- Poor session management leading to session hijacking.  
+
+**Mitigation:** Threat modeling during design; secure coding principles.  
+
+---
+
+## A05:2021 – Security Misconfiguration
+**Definition:** Improperly configured servers, databases, frameworks, or default accounts.  
+**Why it’s risky:** Attackers exploit default passwords or exposed interfaces.  
+
+**Examples:**
+- Default admin accounts enabled on CMS like WordPress.  
+- Verbose error messages revealing internal structure.  
+
+**Mitigation:** Harden servers, remove default accounts, and regularly audit configurations.  
+
+---
+
+## A06:2021 – Vulnerable and Outdated Components
+**Definition:** Using software libraries or frameworks with known vulnerabilities.  
+**Why it’s risky:** Attackers exploit known CVEs to compromise the system.  
+
+**Examples:**
+- Using old jQuery with XSS vulnerabilities.  
+- Outdated CMS plugins with remote code execution flaws.  
+
+**Mitigation:** Keep components updated; monitor CVEs.  
+
+---
+
+## A07:2021 – Identification & Authentication Failures
+**Definition:** Weak authentication mechanisms or improperly implemented account management.  
+**Why it’s risky:** Attackers can take over user accounts or perform privilege escalation.  
+
+**Examples:**
+- No rate limiting on login attempts → brute-force attacks.  
+- Weak passwords or predictable password reset tokens.  
+
+**Mitigation:** Implement MFA, strong password policies, secure password reset flows.  
+
