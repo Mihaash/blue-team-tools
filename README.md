@@ -267,6 +267,46 @@ CNAME Record
 | `md5sum shell` | Check file MD5 sum |
 
 
+# Security Operations Center (SOC)
+
+A **Security Operations Center (SOC)** is the combination of people, processes, and technology that monitor, detect, investigate, and respond to cybersecurity incidents across an organization.
+
+---
+
+## Core Responsibilities
+
+- **24/7 Monitoring:** Logs, endpoints, network traffic, cloud services.  
+- **Detection:** Identify suspicious or malicious activity (alerts from SIEM, EDR, IDS).  
+- **Triage & Investigation:** Determine if alerts are false positives or real threats.  
+- **Incident Response:** Containment, eradication, and recovery for confirmed incidents.  
+- **Threat Hunting:** Proactively discover hidden attackers.  
+- **Threat Intelligence:** Ingest and operationalize IoCs and TTPs.  
+- **Forensics & Root-Cause Analysis:** Deep-dive investigations for major incidents.  
+- **Reporting & Compliance:** Regulatory evidence, post-incident reports.  
+- **Playbook Development & Tuning:** Create repeatable, tested response steps.  
+- **Security Engineering:** Tune tools, collect logs, improve detection coverage.
+
+---
+
+## SOC Models 
+
+- **In‑House / Internal SOC:** Organization owns staff and tooling; full control, higher cost.  
+- **Managed SOC / MSSP:** Outsource monitoring & initial triage to a vendor; cost-effective, less direct control.  
+- **Co‑Managed SOC:** Hybrid of internal team + MSSP; balanced approach.  
+- **Virtual SOC (vSOC):** Cloud/SaaS-driven; remote analysts, cloud-hosted tooling, fast deployment.  
+- **Command SOC:** Centralized command coordinating multiple regional/local SOCs in large enterprises.
+
+---
+
+## SOC Organization & Roles
+
+| Tier / Role | Responsibilities | Skills |
+|------------|-----------------|-------|
+| **Tier 1 Analyst (Alert Triage)** | Monitor SIEM dashboard, validate alerts, initial enrichment, escalate to Tier 2 | Log basics, Linux/Windows basics, networking, attention to detail |
+| **Tier 2 (Incident Responder)** | Deep investigations, endpoint triage, network traces, log correlation, containment | EDR tools, packet analysis, forensics, moderate scripting |
+| **Tier 3 (Threat Hunter / Forensics / Malware Analyst)** | Hunt stealthy attackers, reverse engineer malware, tune detections, develop content | Reverse engineering, memory forensics, threat intelligence, advanced scripting |
+| **SOC Engineer / Architect** | Build/tune SIEM, logging pipelines, integrations, automate playbooks | SIEM internals, APIs, data pipelines, containers, observability |
+| **Threat Intelligence A**
 
 
 
