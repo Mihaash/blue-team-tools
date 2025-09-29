@@ -1,6 +1,6 @@
   # blue-team-tools
   
-  #IP address
+  # IP address
 - An IP address (Internet Protocol address) is a unique identifier assigned to each device connected to a network, allowing devices to communicate with each other. It can be IPv4 (e.g., 192.168.1.10) or IPv6 (e.g., 2001:0db8:85a3::8a2e:0370:7334).
 
 | Type         | Example       | Scope / Use Case                      |
