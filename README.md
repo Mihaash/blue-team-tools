@@ -266,7 +266,6 @@ CNAME Record
 | `echo f0VMR... | base64 -d > shell` | Decode base64 to file |
 | `md5sum shell` | Check file MD5 sum |
 
-
 # Security Operations Center (SOC)
 
 A **Security Operations Center (SOC)** is the combination of people, processes, and technology that monitor, detect, investigate, and respond to cybersecurity incidents across an organization.
@@ -306,11 +305,8 @@ A **Security Operations Center (SOC)** is the combination of people, processes, 
 | **Tier 2 (Incident Responder)** | Deep investigations, endpoint triage, network traces, log correlation, containment | EDR tools, packet analysis, forensics, moderate scripting |
 | **Tier 3 (Threat Hunter / Forensics / Malware Analyst)** | Hunt stealthy attackers, reverse engineer malware, tune detections, develop content | Reverse engineering, memory forensics, threat intelligence, advanced scripting |
 | **SOC Engineer / Architect** | Build/tune SIEM, logging pipelines, integrations, automate playbooks | SIEM internals, APIs, data pipelines, containers, observability |
-| **Threat Intelligence A**
+| **Threat Intelligence Analyst** | Curate IoCs, map to MITRE ATT&CK, provide context & predictive insights | Threat intel analysis, MITRE ATT&CK mapping, reporting |
+| **SOC Manager / Head of SOC** | People & ops management, runbooks, KPIs, budgets, liaison with execs & IR teams | Management, strategy, communication, budgeting |
+| **Incident Response / Forensics Team** | Lead major incident remediation, legal coordination, post-mortems | Forensics, IR procedures, regulatory compliance |
 
-
-
-
-
-
-
+---
