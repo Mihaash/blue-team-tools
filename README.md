@@ -153,8 +153,13 @@ CNAME Record
 | Accuracy       | High (fewer false positives, more reliable)    | Fast but less accurate (can miss things or produce false positives) |
 | Output         | Services, versions, vulnerabilities, scripts   | List of IPs that responded on a given port   |
 
+**crt.sh** is a public search interface for Certificate Transparency (CT) logs.  
+It lists every TLS/SSL certificate issued that mentions a domain, revealing subdomains and SANs.
+**Sublist3r** is a Python tool used for passive subdomain enumeration.  
+It discovers subdomains of a target domain using public sources like search engines, DNS records, and certificate logs.  
+The results help map the attack surface for security testing or recon.
 
-
+**WhatWeb** is a web scanner/fingerprint tool that identifies technologies used by a website (web server, CMS, frameworks, JavaScript libraries, analytics, plugins, and more).
 
 | Feature      | Nessus                     | Nexpose (Rapid7)           |
 | ------------ | -------------------------- | -------------------------- |
